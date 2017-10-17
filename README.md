@@ -1,4 +1,7 @@
-一. 前言
+# vue-tinymce-zh_ch
+
+## 一. 前言
+
     1. 本组件是对tinymce的封装,汉化及二次开发.
     2. 语言包下载地址: https://www.tinymce.com/download/language-packages/
     3. 考虑到上传图片总是涉及鉴权等业务逻辑, 上传方法必须由外部传入.
@@ -31,15 +34,26 @@
                     })
                 })
             }
-    4. 视频上传功能的业务更复杂, 暂时不考虑
-二. 参数说明:
-    value 编辑器内容, 外部绑定的v-model
-    plugins 要使用的插件, 默认全部
-    toolbar1 工具栏第一行
-    toolbar2 工具栏第二行
-    other_options 其他配置
-    uploadImage: 上传图片方法, 参数为file对象
-三. 事件: 
-    input: 内容更新时会触发此事件, 同时触发外部绑定的v-model数据自动更新.
-四. 方法: 
-    暂时未提供供外部调用的方法
+        4. 视频上传功能的业务更复杂, 暂时不考虑
+
+## 二. 参数说明:
+
+        value 编辑器内容, 外部绑定的v-model
+
+        plugins 要使用的插件, 默认全部
+
+        toolbar1 工具栏第一行
+
+        toolbar2 工具栏第二行
+
+        other_options 其他配置
+
+        uploadImage: 上传图片方法, 参数为file对象
+
+## 三. 事件: 
+
+        input: 内容更新时会触发此事件, 同时触发外部绑定的v-model数据自动更新.
+
+## 四. 方法: 
+
+        暂时未提供供外部调用的方法
