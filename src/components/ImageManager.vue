@@ -18,8 +18,10 @@
                                 <div class="mce-container-body mce-abs-layout" style="width: 395px; height: 30px;">
                                     <div class="mce-abs-end"></div>
                                     <label class="mce-widget mce-label mce-abs-layout-item mce-first" for="mceu_44" style="line-height: 16px; left: 0px; top: 7px; width: 142px; height: 16px;">图片地址</label>
-                                    <div class="mce-combobox mce-abs-layout-item mce-last mce-has-open" style="left: 142px; top: 0px; width: 253px; height: 30px;"><input class="mce-textbox" v-model='imgUrl' hidefocus="1" spellcheck="false" placeholder="" aria-labelledby="mceu_44-l" style="width: 210px;">
-                                        <div id="" class="mce-btn" tabindex="-1" style="margin-left: -4px;">
+                                    <div class="mce-combobox mce-abs-layout-item mce-last mce-has-open" style="left: 142px; top: 0px; width: 253px; height: 30px;">
+                                        <input v-if="uploadImage" class="mce-textbox" v-model='imgUrl' hidefocus="1" spellcheck="false" placeholder="" aria-labelledby="mceu_44-l" style="width: 210px;">
+                                        <input v-else class="mce-textbox" v-model='imgUrl' hidefocus="1" spellcheck="false" placeholder="" aria-labelledby="mceu_44-l" style="width: 243px;">
+                                        <div v-if="uploadImage" class="mce-btn" tabindex="-1" style="margin-left: -4px;">
                                             <button ype="button" hidefocus="1" tabindex="-1" title="选择图片" @click="selectImage">
                                                 <i class="mce-ico mce-i-browse"></i>
                                             </button>
