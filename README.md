@@ -7,7 +7,7 @@
     3. 考虑到上传图片总是涉及鉴权等业务逻辑, 上传方法必须由外部传入.
         a. 如果不配置uploadImage方法, 将不会有选择图片按钮, 只能手动输入图片url.
         b. 参数: file, 返回: Promise, resolve(url)
-        d. 示例: 
+        d. 示例(需按实际业务调整):
             uploadImage: (file) => {
                 return new Promise((resolve, reject) => {
                     const postData = new FormData()
