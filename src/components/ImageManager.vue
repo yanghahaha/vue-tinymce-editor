@@ -19,9 +19,9 @@
                                     <div class="mce-abs-end"></div>
                                     <label class="mce-widget mce-label mce-abs-layout-item mce-first" for="mceu_44" style="line-height: 16px; left: 0px; top: 7px; width: 142px; height: 16px;">图片地址</label>
                                     <div class="mce-combobox mce-abs-layout-item mce-last mce-has-open" style="left: 142px; top: 0px; width: 253px; height: 30px;">
-                                        <input v-if="uploadImage" class="mce-textbox" v-model='imgUrl' hidefocus="1" spellcheck="false" placeholder="" aria-labelledby="mceu_44-l" style="width: 210px;">
+                                        <input v-if="uploadImageHandle" class="mce-textbox" v-model='imgUrl' hidefocus="1" spellcheck="false" placeholder="" aria-labelledby="mceu_44-l" style="width: 210px;">
                                         <input v-else class="mce-textbox" v-model='imgUrl' hidefocus="1" spellcheck="false" placeholder="" aria-labelledby="mceu_44-l" style="width: 243px;">
-                                        <div v-if="uploadImage" class="mce-btn" tabindex="-1" style="margin-left: -4px;">
+                                        <div v-if="uploadImageHandle" class="mce-btn" tabindex="-1" style="margin-left: -4px;">
                                             <button ype="button" hidefocus="1" tabindex="-1" title="选择图片" @click="selectImage">
                                                 <i class="mce-ico mce-i-browse"></i>
                                             </button>
@@ -90,7 +90,7 @@ export default {
         }
     },
     props: {
-        uploadImage: { type: Function, default: null } // 上传方法必须由外部传入
+        uploadImageHandle: { type: Function, default: null } // 上传方法必须由外部传入
     },
     computed: {
         proportClass() {
@@ -137,8 +137,8 @@ export default {
             if (this.$refs.imgUploader.files.length > 0) {
                 const file = this.$refs.imgUploader.files[0]
                 const orignImageName = file.name.replace(/\.jpg|\.png|\.git|\.jpeg/g, '')
-                if (this.uploadImage) {
-                    this.uploadImage(file).then(url => {
+                if (this.uploadImageHandle) {
+                    this.uploadImageHandle(file).then(url => {
                         this.imgUrl = url
                         this.imgAlt = orignImageName
                         getFileSize(url).then((size) => {

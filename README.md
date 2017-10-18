@@ -8,7 +8,7 @@
         a. 如果不配置uploadImage方法, 将不会有选择图片按钮, 只能手动输入图片url.
         b. 参数: file, 返回: Promise, resolve(url)
         d. 示例(需按实际业务调整):
-            uploadImage: (file) => {
+            uploadImageHandle: (file) => {
                 return new Promise((resolve, reject) => {
                     const postData = new FormData()
                     postData.append('file', file)
@@ -48,7 +48,7 @@
 
         other_options 其他配置
 
-        uploadImage: 上传图片方法, 参数为file对象
+        uploadImageHandle: 上传图片方法, 参数为file对象
 
 ## 三. 事件: 
 

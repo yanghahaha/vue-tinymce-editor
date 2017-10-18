@@ -27,7 +27,7 @@
                                             <label class="mce-widget mce-label mce-abs-layout-item mce-first" for="mceu_234" style="line-height: 16px; left: 0px; top: 7px; width: 103px; height: 16px;">视频地址</label>
                                             <div class="mce-combobox mce-abs-layout-item mce-last mce-has-open" style="left: 103px; top: 0px; width: 369px; height: 30px;"><input class="mce-textbox" v-model="videoUrl" value="" hidefocus="1" spellcheck="false" size="40" placeholder="" aria-labelledby="mceu_234-l" style="width: 326px;">
                                                 <i class="mce-status mce-ico" style="display: none"></i>
-                                                <div class="mce-btn mce-open" tabindex="-1" role="button" style='margin-left:-4px;'>
+                                                <div class="mce-btn mce-open" tabindex="-1" role="button" style='margin-left:-3px;'>
                                                     <button type="button" hidefocus="1" tabindex="-1" @click="browseFile">
                                                         <i class="mce-ico mce-i-browse"></i>
                                                     </button>

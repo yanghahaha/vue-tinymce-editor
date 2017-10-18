@@ -3,10 +3,10 @@
     1. 本组件是对tinymce的封装,汉化及二次开发.
     2. 语言包下载地址: https://www.tinymce.com/download/language-packages/
     3. 考虑到上传图片总是涉及鉴权等业务逻辑, 上传方法必须由外部传入.
-        a. 如果不配置uploadImage方法, 将不会有选择图片按钮, 只能手动输入图片url.
+        a. uploadImageHandle, 将不会有选择图片按钮, 只能手动输入图片url.
         b. 参数: file, 返回: Promise, resolve(url)
         d. 示例: 
-            uploadImage: (file) => {
+            uploadImageHandle: (file) => {
                 return new Promise((resolve, reject) => {
                     const postData = new FormData()
                     postData.append('file', file)
@@ -39,7 +39,7 @@
     toolbar1 工具栏第一行
     toolbar2 工具栏第二行
     other_options 其他配置
-    uploadImage: 上传图片方法, 参数为file对象
+    uploadImageHandle: 上传图片方法, 参数为file对象
 三. 事件: 
     input: 内容更新时会触发此事件, 同时触发外部绑定的v-model数据自动更新.
 四. 方法: 
@@ -48,7 +48,7 @@
 <template>
     <div :id='randomID'>
         <textarea :id="editorID" v-model="content"></textarea>
-        <ImageManager ref='imageManager' :uploadImage='uploadImage' />
+        <ImageManager ref='imageManager' :uploadImageHandle='uploadImageHandle' />
         <VideoManager ref='videoManager' />
     </div>
 </template>
@@ -107,8 +107,10 @@ import 'tinymce/plugins/toc';
 import 'tinymce/plugins/visualchars';
 
 import 'tinymce/skins/lightgray/skin.min.css'
-import 'tinymce/skins/lightgray/content.min.css'
 import 'tinymce/skins/lightgray/fonts/tinymce.woff'
+
+// 解决tinymce覆盖全局样式问题, //主要是body 和thtd
+import '../assets/content.css'
 
 // 汉化包
 import '../assets/langs/zh_CN'
@@ -141,7 +143,7 @@ export default {
             }, type: Object
         },
         // 上传图片方法
-        uploadImage: { type: Function, default: null }
+        uploadImageHandle: { type: Function, default: null }
     },
     data() {
         return {
