@@ -57,3 +57,6 @@
 ## 四. 方法: 
 
         暂时未提供供外部调用的方法
+        
+## 五. 安装:
+        npm install vue-tinymce-editor-cn --save
