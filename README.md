@@ -1,4 +1,4 @@
-# vue-tinymce-zh_ch
+# vue-tinymce-zh_cn
 
 ## 一. 前言
 
