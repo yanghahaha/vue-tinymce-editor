@@ -1,7 +1,8 @@
 <template>
     <div id="app">
-        <tinymce v-model="data" :uploadImage='uploadImage' style="min-height: 400px;"></tinymce>
+        <tinymce ref="mce" v-model="data" :uploadImageHandle='uploadImage' style="min-height: 400px;"></tinymce>
         <button type="button" @click="clickHandler" style='margin-top: 20px;'>重置编辑器内容</button>
+        <button type="button" @click="removeEditor" style='margin-top: 20px;'>移除编辑器</button>
         <div>{{ data }}</div>
     </div>
 </template>
@@ -54,11 +55,14 @@ export default {
         };
     },
     mounted() {
-
+        // this.removeEditor()
     },
     methods: {
         clickHandler() {
             this.data = '';
+        },
+        removeEditor() {
+            this.$refs.mce.$destroy()
         }
     }
 }

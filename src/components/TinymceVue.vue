@@ -165,7 +165,11 @@ export default {
         this.init();
     },
     beforeDestroy() {
-        if (this.editor) this.editor.destroy();
+        try {
+            if (this.editor) this.editor.destroy();
+        } catch (e) {
+            console.log(e)
+        }
     },
     watch: {
         value: function(newValue) {
