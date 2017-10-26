@@ -110,7 +110,7 @@ export default {
                 return
             } else {
                 this.imgWidth = val
-                if (this.proportion > 0 && this.constrainProportion) this.imgHeight = parseInt(val * this.proportion)
+                if (this.proportion > 0 && this.constrainProportion) this.imgHeight = parseInt(val / this.proportion)
             }
         },
         imgHeight(val) {
@@ -121,7 +121,7 @@ export default {
                 return
             } else {
                 this.imgHeight = val
-                if (this.proportion > 0 && this.constrainProportion) this.imgWidth = parseInt(val / this.proportion)
+                if (this.proportion > 0 && this.constrainProportion) this.imgWidth = parseInt(val * this.proportion)
             }
         }
     },
