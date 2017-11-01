@@ -40,12 +40,12 @@
                                     <label class="mce-widget mce-label mce-abs-layout-item mce-first" for="mceu_46" style="line-height: 16px; left: 0px; top: 7px; width: 142px; height: 16px;">图片尺寸</label>
                                     <div class="mce-container mce-abs-layout-item mce-last" aria-labelledby="mceu_46-l" style="left: 142px; top: 0px; width: 253px; height: 30px;">
                                         <div class="mce-container-body mce-abs-layout" style="width: 253px; height: 30px;">
-                                            <div class="mce-abs-end"></div><input hidefocus="1" maxlength="5" size="3" class="mce-textbox mce-abs-layout-item mce-first" v-model='imgWidth' aria-label="Width" style="left: 0px; top: 0px; width: 50px; height: 28px;">
-                                            <span class="mce-widget mce-label mce-abs-layout-item" style="line-height: 16px; left: 66px; top: 7px; width: 7px; height: 16px;">x</span><input v-model='imgHeight' hidefocus="1" maxlength="5" size="3" class="mce-textbox mce-abs-layout-item" aria-label="Height" style="left: 80px; top: 0px; width: 50px; height: 28px;">
-                                            <div :class="proportClass" @click='changeProportSelect' unselectable="on" aria-labelledby="mceu_50-al" tabindex="-1" aria-checked="true" style="left: 155px; top: 6px; width: 157px; height: 18px;">
+                                            <div class="mce-abs-end"></div><input disabled hidefocus="1" maxlength="5" size="3" class="mce-textbox mce-abs-layout-item mce-first" v-model='imgWidth' aria-label="Width" style="left: 0px; top: 0px; width: 50px; height: 28px;">
+                                            <span class="mce-widget mce-label mce-abs-layout-item" style="line-height: 16px; left: 66px; top: 7px; width: 7px; height: 16px;">x</span><input disabled v-model='imgHeight' hidefocus="1" maxlength="5" size="3" class="mce-textbox mce-abs-layout-item" aria-label="Height" style="left: 80px; top: 0px; width: 50px; height: 28px;">
+                                            <!-- <div :class="proportClass" @click='changeProportSelect' unselectable="on" aria-labelledby="mceu_50-al" tabindex="-1" aria-checked="true" style="left: 155px; top: 6px; width: 157px; height: 18px;">
                                                 <i class="mce-ico mce-i-checkbox"></i>
                                                 <span class="mce-label">约束比例</span>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -138,18 +138,19 @@ export default {
                 const file = this.$refs.imgUploader.files[0]
                 const orignImageName = file.name.replace(/\.jpg|\.png|\.git|\.jpeg/g, '')
                 if (this.uploadImageHandle) {
-                    this.uploadImageHandle(file).then(url => {
-                        this.imgUrl = url
-                        this.imgAlt = orignImageName
-                        getFileSize(url).then((size) => {
-                            this.imgWidth = size.width
-                            this.imgHeight = size.height
-                            this.proportion = size.width / size.height
-                        }).catch((e) => {
-
+                    this.uploadImageHandle(file)
+                        .then(url => {
+                            this.imgUrl = url
+                            this.imgAlt = orignImageName
+                            getFileSize(url)
+                                .then(size => {
+                                    this.imgWidth = size.width
+                                    this.imgHeight = size.height
+                                    this.proportion = size.width / size.height
+                                })
+                                .catch(e => {})
                         })
-                    }).catch((e) => {
-                    })
+                        .catch(e => {})
                 }
             }
         },
@@ -172,10 +173,10 @@ export default {
                 url: this.imgUrl,
                 alt: this.imgAlt,
                 width: this.imgWidth,
-                height: this.imgHeight,
+                height: this.imgHeight
             }
             if (this.callback && typeof this.callback === 'function') {
-                this.callback( image )
+                this.callback(image)
             }
             this.$emit('selectImage', image)
             this.closePanel()
@@ -201,5 +202,8 @@ function getFileSize(filePath) {
     top: 100px;
     width: 426px;
     height: 230px;
+}
+input[disabled] {
+    background: #eee;
 }
 </style>
