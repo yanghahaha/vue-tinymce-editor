@@ -1,9 +1,9 @@
-# vue-tinymce-zh_ch
+# vue-tinymce-zh_cn
 
 ## 一. 前言
-
+```
     1. 本组件是对tinymce的封装,汉化及二次开发.
-    2. 语言包下载地址: https://www.tinymce.com/download/language-packages/
+    2. 如果需要其他语言, 语言包下载地址: https://www.tinymce.com/download/language-packages/
     3. 考虑到上传图片总是涉及鉴权等业务逻辑, 上传方法必须由外部传入.
         a. 如果不配置uploadImage方法, 将不会有选择图片按钮, 只能手动输入图片url.
         b. 参数: file, 返回: Promise, resolve(url)
@@ -35,7 +35,7 @@
                 })
             }
         4. 视频上传功能的业务更复杂, 暂时不考虑
-
+```
 ## 二. 参数说明:
 
         value 编辑器内容, 外部绑定的v-model
@@ -57,3 +57,6 @@
 ## 四. 方法: 
 
         暂时未提供供外部调用的方法
+        
+## 五. 安装:
+        npm install vue-tinymce-editor-cn --save
