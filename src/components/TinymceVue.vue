@@ -116,7 +116,7 @@ import '../assets/content.css'
 import '../assets/langs/zh_CN'
 
 // 导入图片管理和视频管理组件(自定义vue组件, 使用原tinymce组件的样式,重新定义的功能)
-import ImageManager from './ImageManager'
+import ImageManager from './MuitlImageManager'
 import VideoManager from './VideoManager'
 
 export default {
@@ -222,8 +222,11 @@ export default {
                         tooltip: '插入图片',
                         icon: 'image',
                         onclick: () => {
-                            that.$refs.imageManager.getImage(img => {
-                                editor.insertContent(`<img src="${img.url}" alt="${img.alt}" />`)
+                            that.$refs.imageManager.getImage(arr => {
+                                for (let i = 0; i < arr.length; i++) {
+                                    const img = arr[i]
+                                    editor.insertContent(`<img src="${img.url}" alt="${img.alt}" />`)
+                                }
                             })
                         }
                     })
